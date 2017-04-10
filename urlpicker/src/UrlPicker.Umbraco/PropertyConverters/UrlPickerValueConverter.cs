@@ -93,7 +93,7 @@ namespace UrlPicker.Umbraco.PropertyConverters
                         }
 
                     }
-                    if (IsMultipleDataType(propertyType.DataTypeId))
+                    if (propertyType != null && IsMultipleDataType(propertyType.DataTypeId))
                     {
                         return pickers.Yield().Where(x => x != null);
                     }
@@ -106,7 +106,7 @@ namespace UrlPicker.Umbraco.PropertyConverters
                 catch (Exception ex)
                 {
                     LogHelper.Error<UrlPickerValueConverter>(ex.Message, ex);
-                    if (IsMultipleDataType(propertyType.DataTypeId))
+                    if (propertyType != null && IsMultipleDataType(propertyType.DataTypeId))
                     {
                         return Enumerable.Empty<Models.UrlPicker>();
                     }
