@@ -63,7 +63,7 @@ namespace UrlPicker.Umbraco.PropertyConverters
                                 {
                                     picker.Url = picker.TypeData.Content.Url;
                                     picker.UrlAbsolute = picker.TypeData.Content.UrlAbsolute();
-                                    picker.Name = (picker.Meta.Title.IsNullOrWhiteSpace()) ? picker.TypeData.Content.Name : picker.Meta.Title;
+                                    picker.Name = (picker.Meta == null || picker.Meta.Title.IsNullOrWhiteSpace()) ? picker.TypeData.Content.Name : picker.Meta.Title;
 
                                     if (!picker.TypeData.Anchor.IsNullOrWhiteSpace())
                                     {
@@ -81,14 +81,14 @@ namespace UrlPicker.Umbraco.PropertyConverters
                                 {
                                     picker.Url = picker.TypeData.Media.Url;
                                     picker.UrlAbsolute = picker.TypeData.Media.Url();
-                                    picker.Name = (picker.Meta.Title.IsNullOrWhiteSpace()) ? picker.TypeData.Media.Name : picker.Meta.Title;
+                                    picker.Name = (picker.Meta == null || picker.Meta.Title.IsNullOrWhiteSpace()) ? picker.TypeData.Media.Name : picker.Meta.Title;
                                 }
                                 break;
 
                             default:
                                 picker.Url = picker.TypeData.Url;
                                 picker.UrlAbsolute = picker.TypeData.Url;
-                                picker.Name = (picker.Meta.Title.IsNullOrWhiteSpace()) ? picker.TypeData.Url : picker.Meta.Title;
+                                picker.Name = (picker.Meta == null || picker.Meta.Title.IsNullOrWhiteSpace()) ? picker.TypeData.Url : picker.Meta.Title;
                                 break;
                         }
 
