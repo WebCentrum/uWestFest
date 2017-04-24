@@ -351,9 +351,8 @@ angular.module('umbraco').controller('UrlPickerController', function ($scope, $t
     function init() {
 
         // hack to update v0.14 or lower version items to new format
-        $scope.model.value = $scope.model.value || [{}];
         var stringValue = JSON.stringify($scope.model.value);
-        if (stringValue.substring(0, 1) === '{') {
+        if (stringValue && stringValue.substring(0, 1) === '{') {
             var newStringValue = "[" + JSON.stringify($scope.model.value) + "]";
             $scope.model.value = newStringValue;
         }
@@ -481,6 +480,9 @@ angular.module('umbraco').controller('UrlPickerController', function ($scope, $t
             }
         });
         
+        // need to pass the object to model.value -- needed for wrapper types (Vorto etc.) to work correctly, because
+        // syncing in formSubmitting is too late in these scenarios
+        $scope.model.value = $scope.pickers;
     }
 
     $scope.sync = function () {
