@@ -15,14 +15,14 @@
                 </div>
 
             	<div class="panel-body">
-					<div class="link-meta">
-						<div class="row control-group link-title" ng-hide="model.config.hideTitle">
-							<label for="urlPickerTitle-{{$index + 1}}"><localize key="urlPicker_title">Title</localize></label> <input id="urlPickerTitle-{{$index + 1}}" type="text" ng-model="picker.meta.title" />
-						</div>
-						<div class="row control-group link-newwindow" ng-hide="model.config.hideOpenNew">
-							<label><localize key="urlPicker_newWindow">Open in new window?</localize>&nbsp;&nbsp;<input type="checkbox" ng-model="picker.meta.newWindow" /></label>
-						</div>
-					</div>
+                    <div class="link-meta">
+                        <div class="row control-group link-title" ng-hide="model.config.hideTitle">
+                            <label for="urlPickerTitle-{{$index + 1}}"><localize key="urlPicker_title">Title</localize></label> <input id="urlPickerTitle-{{$index + 1}}" type="text" ng-model="picker.meta.title" />
+                        </div>
+                        <div class="row control-group link-newwindow" ng-hide="model.config.hideOpenNew">
+                            <label><localize key="urlPicker_newWindow">Open in new window?</localize>&nbsp;&nbsp;<input type="checkbox" ng-model="picker.meta.newWindow" /></label>
+                        </div>
+                    </div>
 
 					<ul class="nav nav-tabs">
 						<li ng-class="{active : picker.type == 'url'}" ng-hide="model.config.hideUrl">
@@ -50,21 +50,25 @@
                                 <input type="text" ng-model="picker.typeData.anchor" localize="placeholder" placeholder="@urlPicker_anchorPlaceholder" ng-show="picker.$showAnchor || picker.typeData.anchor">
                             </div>
 						</div>
-						<div ng-show="picker.type == 'media'">
-							<a ng-click="openTreePicker('media', picker)" class="select" prevent-default><localize key="urlPicker_select">Select</localize>…</a>
+                        <div ng-show="picker.type == 'media'">
+                            <div class="row control-group link-download" ng-hide="model.config.hideDownload">
+                                <label><localize key="urlPicker_download">Download the file?</localize>&nbsp;&nbsp;<input type="checkbox" ng-model="picker.meta.download" /></label>
+                            </div>
+                            <a ng-click="openTreePicker('media', picker)" class="select" prevent-default><localize key="urlPicker_select">Select</localize>…</a>
                             <span class="truncate"><i class="icon {{picker.media.icon}}"></i> {{picker.media.name}}</span>
-                            
-							<a href class="delete-icon" ng-click="resetType('media', picker)" ng-show="picker.typeData.mediaId > 0"><i class="icon icon-delete"></i></a>
-                            
-							<div class="thumbnail" ng-show="model.config.mediaPreview">
-								<img ng-src="{{picker.media.thumbnail}}" alt="" ng-show="picker.media.thumbnail">
-								
-								<span class="icon-holder" ng-hide="picker.media.thumbnail">
-									<i class="icon {{picker.media.icon}} large" ></i>
-									<small>{{picker.media.name}}</small>
-								</span>
-							</div>
-						</div>
+
+                            <a href class="delete-icon" ng-click="resetType('media', picker)" ng-show="picker.typeData.mediaId > 0"><i class="icon icon-delete"></i></a>
+
+                            <div class="thumbnail" ng-show="model.config.mediaPreview">
+                                <img ng-src="{{picker.media.thumbnail}}" alt="" ng-show="picker.media.thumbnail">
+
+                                <span class="icon-holder" ng-hide="picker.media.thumbnail">
+                                    <i class="icon {{picker.media.icon}} large"></i>
+                                    <small>{{picker.media.name}}</small>
+                                </span>
+                            </div>
+
+                        </div>
 					</div>
 				</div>
 			</div>

@@ -4,5 +4,6 @@
     {
         public string Title { get; set; }
         public bool NewWindow { get; set; }
+        public bool Download { get; set; }
     }
 }
